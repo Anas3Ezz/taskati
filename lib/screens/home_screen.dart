@@ -1,7 +1,31 @@
-import 'package:flutter/material.dart';
+import 'dart:io';
 
-class HomeScreen extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final ImagePicker picker = ImagePicker();
+  XFile? photo;
+  // // Pick an image.
+  // final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+
+  // Capture a photo.
+  void pickPhotoFromCamera() async {
+    photo = await picker.pickImage(source: ImageSource.camera);
+    setState(() {});
+  }
+
+  void pickPhotoFromGallery() async {
+    photo = await picker.pickImage(source: ImageSource.gallery);
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -10,15 +34,33 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CircleAvatar(
-              backgroundColor: Colors.black,
-              radius: 80,
-              child: Icon(Icons.person, size: 120),
+            Visibility(
+              visible: photo == null,
+              replacement: CircleAvatar(
+                backgroundColor: Colors.black,
+                radius: 80,
+                backgroundImage: Image.file(File(photo?.path ?? "")).image,
+              ),
+              child: CircleAvatar(
+                backgroundColor: Colors.black,
+                radius: 80,
+                child: Icon(Icons.person, size: 120),
+              ),
             ),
             SizedBox(height: 20),
-            CustomButton(text: 'Pick an image form Camera', onTap: () {}),
+            CustomButton(
+              text: 'Pick an image form Camera',
+              onTap: () {
+                pickPhotoFromCamera();
+              },
+            ),
             SizedBox(height: 20),
-            CustomButton(text: 'Pick an image form gallery', onTap: () {}),
+            CustomButton(
+              text: 'Pick an image form gallery',
+              onTap: () {
+                pickPhotoFromGallery();
+              },
+            ),
           ],
         ),
       ),
