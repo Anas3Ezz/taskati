@@ -38,20 +38,20 @@ class _AuthScreenState extends State<AuthScreen> {
                 radius: 80,
                 backgroundImage: Image.file(File(photo?.path ?? "")).image,
               ),
-              child: CircleAvatar(
+              child: const CircleAvatar(
                 backgroundColor: Colors.black,
                 radius: 80,
                 child: Icon(Icons.person, size: 120),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             CustomButton(
               text: 'Pick an image form Camera',
               onTap: () {
                 pickPhotoFromCamera();
               },
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             CustomButton(
               text: 'Pick an image form gallery',
               onTap: () {
