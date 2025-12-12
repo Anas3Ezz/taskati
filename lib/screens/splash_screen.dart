@@ -24,11 +24,11 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Lottie.asset('assets/images/taskati.json'),
-            Text(
+            const Text(
               'Taskati',
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
             ),
-            Text(
+            const Text(
               r"it's time to be organized",
               style: TextStyle(fontSize: 18, color: Colors.grey),
             ),
