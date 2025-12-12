@@ -58,6 +58,21 @@ class _AuthScreenState extends State<AuthScreen> {
                 pickPhotoFromGallery();
               },
             ),
+            const SizedBox(height: 18),
+            const Divider(indent: 20, endIndent: 20),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: TextFormField(
+                enabled: true,
+
+                decoration: InputDecoration(
+                  hint: const Text('Enter your name'),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
