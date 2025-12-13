@@ -1,16 +1,11 @@
 # taskati
+# task app will help you to manage your day tasks and organize your day
 
-A new Flutter project.
+#Splash Screen 
 
-## Getting Started
+<img width="463" height="732" alt="Screenshot 2025-12-13 172750" src="https://github.com/user-attachments/assets/98a16ab3-2eef-4d07-8dc3-74a01cd1e4e4" />
 
-This project is a starting point for a Flutter application.
+#Auth Screen
 
-A few resources to get you started if this is your first Flutter project:
+<img width="430" height="736" alt="Screenshot 2025-12-13 172845" src="https://github.com/user-attachments/assets/8d5531c7-5bc2-4101-96e4-d39f26665f31" />
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
