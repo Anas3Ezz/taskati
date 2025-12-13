@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:taskati/screens/home_screen.dart';
 import 'package:taskati/widgets/custom_text_form.dart';
 import 'package:taskati/widgets/custome_button.dart';
 
@@ -74,7 +75,10 @@ class _AuthScreenState extends State<AuthScreen> {
               text: 'Submit',
               onTap: () {
                 if (_formKey.currentState!.validate()) {
-                  print('GOOD');
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                  );
                 }
               },
             ),
