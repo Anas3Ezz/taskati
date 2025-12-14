@@ -5,18 +5,18 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(12.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              HomeScreenProfileName(),
-              SizedBox(height: 10),
-              TodaysDate(),
-              SizedBox(height: 20),
-              Row(
+              const HomeScreenProfileName(),
+              const SizedBox(height: 10),
+              const TodaysDate(),
+              const SizedBox(height: 20),
+              const Row(
                 children: [
                   DaysOfDate(),
                   DaysOfDate(),
@@ -24,7 +24,57 @@ class HomeScreen extends StatelessWidget {
                   DaysOfDate(),
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
+              Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.deepPurpleAccent,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Row(
+                    children: [
+                      const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        spacing: 2,
+                        children: [
+                          Text(
+                            'Flutter Task-1',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Text(
+                            '02.45 Am -3.45 Am',
+                            style: TextStyle(fontSize: 15, color: Colors.white),
+                          ),
+                          Text(
+                            'I will do this task',
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                          ),
+                        ],
+                      ),
+                      const Spacer(),
+                      Container(width: 1, height: 50, color: Colors.white),
+                      const SizedBox(width: 10),
+                      const RotatedBox(
+                        quarterTurns: 3,
+                        child: Text(
+                          'TODO',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
