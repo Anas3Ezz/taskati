@@ -46,12 +46,12 @@ class TaskCardWidget extends StatelessWidget {
         color: Colors.deepPurpleAccent,
       ),
       child: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(18.0),
         child: Row(
           children: [
             const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: 2,
+              spacing: 12,
               children: [
                 Text(
                   'Flutter Task-1',
