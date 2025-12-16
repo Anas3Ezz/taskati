@@ -7,7 +7,6 @@ class TaskCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dismissible(
       key: UniqueKey(),
-
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
