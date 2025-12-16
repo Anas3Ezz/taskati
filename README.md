@@ -11,4 +11,4 @@
 
 #Home Screen
 
-<img width="1080" height="2400" alt="Screenshot_1765921936" src="https://github.com/user-attachments/assets/c6347f17-1309-43a0-bf7d-d3bd2fb1cf9d" />
+<img width="478" height="769" alt="image" src="https://github.com/user-attachments/assets/b5a3c76a-2ab4-4d9f-be64-d27e65e47d79" />
