@@ -9,3 +9,6 @@
 
 <img width="430" height="736" alt="Screenshot 2025-12-13 172845" src="https://github.com/user-attachments/assets/8d5531c7-5bc2-4101-96e4-d39f26665f31" />
 
+#Home Screen
+
+<img width="1080" height="2400" alt="Screenshot_1765921936" src="https://github.com/user-attachments/assets/c6347f17-1309-43a0-bf7d-d3bd2fb1cf9d" />
