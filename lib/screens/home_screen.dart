@@ -4,8 +4,15 @@ import 'package:taskati/widgets/home_screen_profile_name.dart';
 import 'package:taskati/widgets/task_card.dart';
 import 'package:taskati/widgets/todays_date.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +28,19 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 20),
               SizedBox(
                 height: 120,
-
                 child: ListView.builder(
                   itemCount: 6,
                   scrollDirection: Axis.horizontal,
                   physics: const BouncingScrollPhysics(),
                   shrinkWrap: true,
-                  itemBuilder: (context, index) => const DaysOfDate(),
+                  itemBuilder: (context, index) => DaysOfDate(
+                    isSelected: selectedIndex == index,
+                    onTap: () {
+                      setState(() {
+                        selectedIndex = index;
+                      });
+                    },
+                  ),
                 ),
               ),
               const SizedBox(height: 30),

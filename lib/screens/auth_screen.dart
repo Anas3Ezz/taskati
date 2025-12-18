@@ -77,7 +77,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 if (_formKey.currentState!.validate()) {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
                   );
                 }
               },
