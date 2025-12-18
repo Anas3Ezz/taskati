@@ -14,12 +14,12 @@ class HomeScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: ListView(
-            children: const [
-              HomeScreenProfileName(),
-              SizedBox(height: 10),
-              TodaysDate(),
-              SizedBox(height: 20),
-              Row(
+            children: [
+              const HomeScreenProfileName(),
+              const SizedBox(height: 10),
+              const TodaysDate(),
+              const SizedBox(height: 20),
+              const Row(
                 children: [
                   DaysOfDate(),
                   DaysOfDate(),
@@ -27,8 +27,16 @@ class HomeScreen extends StatelessWidget {
                   DaysOfDate(),
                 ],
               ),
-              SizedBox(height: 20),
-              TaskCardWidget(),
+              const SizedBox(height: 20),
+              ListView.separated(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) => const TaskCardWidget(),
+                separatorBuilder: (context, index) =>
+                    const SizedBox(height: 10),
+                itemCount: 10,
+              ),
+              // const TaskCardWidget(),
             ],
           ),
         ),
