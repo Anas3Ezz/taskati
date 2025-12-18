@@ -9,13 +9,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(12.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+          padding: const EdgeInsets.all(12.0),
+          child: ListView(
+            children: const [
               HomeScreenProfileName(),
               SizedBox(height: 10),
               TodaysDate(),
