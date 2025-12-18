@@ -19,15 +19,18 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 10),
               const TodaysDate(),
               const SizedBox(height: 20),
-              const Row(
-                children: [
-                  DaysOfDate(),
-                  DaysOfDate(),
-                  DaysOfDate(),
-                  DaysOfDate(),
-                ],
+              SizedBox(
+                height: 120,
+
+                child: ListView.builder(
+                  itemCount: 6,
+                  scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) => const DaysOfDate(),
+                ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 30),
               ListView.separated(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
