@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HomeScreenProfileName extends StatelessWidget {
-  const HomeScreenProfileName({super.key});
+class UserGreetingHeader extends StatelessWidget {
+  const UserGreetingHeader({super.key});
 
   @override
   Widget build(BuildContext context) {

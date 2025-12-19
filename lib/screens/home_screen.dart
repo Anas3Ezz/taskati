@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:taskati/widgets/days_of_date.dart';
-import 'package:taskati/widgets/home_screen_profile_name.dart';
 import 'package:taskati/widgets/task_card.dart';
 import 'package:taskati/widgets/todays_date.dart';
+import 'package:taskati/widgets/user_greeting_header.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.all(12.0),
           child: ListView(
             children: [
-              const HomeScreenProfileName(),
+              const UserGreetingHeader(),
               const SizedBox(height: 10),
               const TodaysDate(),
               const SizedBox(height: 20),
