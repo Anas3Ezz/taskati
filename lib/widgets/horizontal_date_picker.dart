@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
-class DaysOfDate extends StatelessWidget {
-  const DaysOfDate({super.key, required this.onTap, required this.isSelected});
+class HorizontalDatePicker extends StatelessWidget {
+  const HorizontalDatePicker({
+    super.key,
+    required this.onTap,
+    required this.isSelected,
+  });
   final bool isSelected;
   final void Function() onTap;
   @override

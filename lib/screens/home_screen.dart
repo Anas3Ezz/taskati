@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:taskati/widgets/days_of_date.dart';
+import 'package:taskati/widgets/horizontal_date_picker.dart';
 import 'package:taskati/widgets/task_card.dart';
 import 'package:taskati/widgets/todays_date.dart';
 import 'package:taskati/widgets/user_greeting_header.dart';
@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   scrollDirection: Axis.horizontal,
                   physics: const BouncingScrollPhysics(),
                   shrinkWrap: true,
-                  itemBuilder: (context, index) => DaysOfDate(
+                  itemBuilder: (context, index) => HorizontalDatePicker(
                     isSelected: selectedIndex == index,
                     onTap: () {
                       setState(() {
