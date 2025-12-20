@@ -26,10 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             Lottie.asset('assets/images/taskati.json'),
             Text('Taskati', style: AppTextStyles().s22Weight500),
-            Text(
-              r"it's time to be organized",
-              style: AppTextStyles().s22Weight500,
-            ),
+            Text(r"it's time to be organized", style: AppTextStyles().s18grey),
           ],
         ),
       ),

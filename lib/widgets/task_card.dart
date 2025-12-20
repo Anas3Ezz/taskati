@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taskati/theme/texts_styles.dart';
 
 class TaskCardWidget extends StatelessWidget {
   const TaskCardWidget({super.key});
@@ -17,41 +18,30 @@ class TaskCardWidget extends StatelessWidget {
           padding: const EdgeInsets.all(18.0),
           child: Row(
             children: [
-              const Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: 12,
                 children: [
                   Text(
                     'Flutter Task-1',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Colors.white,
-                    ),
+                    style: AppTextStyles().s22WhiteWeight500,
                   ),
                   Text(
                     '02.45 Am -3.45 Am',
-                    style: TextStyle(fontSize: 15, color: Colors.white),
+                    style: AppTextStyles().s20WhiteColor,
                   ),
                   Text(
                     'I will do this task',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
+                    style: AppTextStyles().s22WhiteWeight500,
                   ),
                 ],
               ),
               const Spacer(),
-              Container(width: 1, height: 50, color: Colors.white),
+              Container(width: 1, height: 85, color: Colors.white),
               const SizedBox(width: 10),
-              const RotatedBox(
+              RotatedBox(
                 quarterTurns: 3,
-                child: Text(
-                  'TODO',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                child: Text('TODO', style: AppTextStyles().s22WhiteWeight500),
               ),
             ],
           ),
