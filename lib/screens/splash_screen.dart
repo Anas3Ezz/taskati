@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:taskati/screens/auth_screen.dart';
+import 'package:taskati/theme/texts_styles.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -24,13 +25,10 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Lottie.asset('assets/images/taskati.json'),
-            const Text(
-              'Taskati',
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
-            ),
-            const Text(
+            Text('Taskati', style: AppTextStyles().s22Weight500),
+            Text(
               r"it's time to be organized",
-              style: TextStyle(fontSize: 18, color: Colors.grey),
+              style: AppTextStyles().s22Weight500,
             ),
           ],
         ),
