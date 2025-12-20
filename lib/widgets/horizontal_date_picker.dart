@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taskati/theme/texts_styles.dart';
 
 class HorizontalDatePicker extends StatelessWidget {
   const HorizontalDatePicker({
@@ -27,28 +28,20 @@ class HorizontalDatePicker extends StatelessWidget {
                 Text(
                   'oct',
                   style: isSelected
-                      ? const TextStyle(color: Colors.white, fontSize: 19)
-                      : const TextStyle(color: Colors.black, fontSize: 19),
+                      ? AppTextStyles().s20WhiteColor
+                      : AppTextStyles().s20BlackColor,
                 ),
                 Text(
                   '30',
                   style: isSelected
-                      ? const TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.w500,
-                        )
-                      : const TextStyle(
-                          color: Colors.black,
-                          fontSize: 24,
-                          fontWeight: FontWeight.w500,
-                        ),
+                      ? AppTextStyles().s24WhiteColor500
+                      : AppTextStyles().s24BlackColor500,
                 ),
                 Text(
                   'Mon',
                   style: isSelected
-                      ? const TextStyle(color: Colors.white, fontSize: 19)
-                      : const TextStyle(color: Colors.black, fontSize: 19),
+                      ? AppTextStyles().s20WhiteColor
+                      : AppTextStyles().s20BlackColor,
                 ),
               ],
             ),

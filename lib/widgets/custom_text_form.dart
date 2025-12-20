@@ -21,7 +21,7 @@ class MyTextForm extends StatelessWidget {
           controller: nameController,
           keyboardType: TextInputType.name,
           textInputAction: TextInputAction.next,
-          style: const TextStyle(fontSize: 16, color: Colors.black),
+          style: const TextStyle(fontSize: 22, color: Colors.black),
           decoration: InputDecoration(
             hintText: 'Enter your name',
             hintStyle: AppTextStyles().s22Weight500,
