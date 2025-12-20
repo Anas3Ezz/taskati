@@ -37,4 +37,3 @@ class UserGreetingHeader extends StatelessWidget {
     );
   }
 }
-// TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
