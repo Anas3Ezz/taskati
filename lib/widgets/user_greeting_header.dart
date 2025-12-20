@@ -9,9 +9,23 @@ class UserGreetingHeader extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 5.0),
       child: Row(
         children: [
-          Text(
-            'Hi, Anas.\nHave a nice day',
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
+          Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: 'Hi,Anas\n',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.deepPurpleAccent,
+                  ),
+                ),
+                TextSpan(
+                  text: 'Have A Nice Day.',
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400),
+                ),
+              ],
+            ),
           ),
           Spacer(),
           CircleAvatar(
@@ -23,3 +37,4 @@ class UserGreetingHeader extends StatelessWidget {
     );
   }
 }
+// TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
