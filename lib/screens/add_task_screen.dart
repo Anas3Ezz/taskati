@@ -141,10 +141,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   }
 }
 
-// ==========================================
-// REUSABLE CUSTOM INPUT FIELD WIDGET
-// ==========================================
-
 class TaskInputField extends StatelessWidget {
   final String label;
   final String hint;
