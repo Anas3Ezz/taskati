@@ -19,39 +19,59 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: ListView(
-            children: [
-              const UserGreetingHeader(),
-              const SizedBox(height: 10),
-              const TodaysDate(),
-              const SizedBox(height: 20),
-              SizedBox(
-                height: 120,
-                child: ListView.builder(
-                  itemCount: 6,
-                  scrollDirection: Axis.horizontal,
-                  physics: const BouncingScrollPhysics(),
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) => HorizontalDatePicker(
-                    isSelected: selectedIndex == index,
-                    onTap: () {
-                      setState(() {
-                        selectedIndex = index;
-                      });
-                    },
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          child: CustomScrollView(
+            physics: const BouncingScrollPhysics(),
+            slivers: [
+              // 1. Static Headers
+              const SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 12.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      UserGreetingHeader(),
+                      SizedBox(height: 10),
+                      TodaysDate(),
+                      SizedBox(height: 20),
+                    ],
                   ),
                 ),
               ),
-              const SizedBox(height: 30),
-              ListView.separated(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
+
+              // 2. Horizontal List (Keeps its SizedBox height)
+              SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 120,
+                  child: ListView.builder(
+                    itemCount: 6,
+                    scrollDirection: Axis.horizontal,
+                    physics: const BouncingScrollPhysics(),
+                    // shrinkWrap is removed as height is fixed by SizedBox
+                    itemBuilder: (context, index) => HorizontalDatePicker(
+                      isSelected: selectedIndex == index,
+                      onTap: () {
+                        setState(() {
+                          selectedIndex = index;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+              ),
+
+              const SliverToBoxAdapter(child: SizedBox(height: 30)),
+
+              // 3. Main Vertical List (Optimized)
+              SliverList.separated(
                 itemBuilder: (context, index) => const TaskCardWidget(),
                 separatorBuilder: (context, index) =>
                     const SizedBox(height: 10),
                 itemCount: 10,
               ),
+
+              // Bottom padding
+              const SliverToBoxAdapter(child: SizedBox(height: 12)),
             ],
           ),
         ),
