@@ -23,7 +23,6 @@ class _HomeScreenState extends State<HomeScreen> {
           child: CustomScrollView(
             physics: const BouncingScrollPhysics(),
             slivers: [
-              // 1. Static Headers
               const SliverToBoxAdapter(
                 child: Padding(
                   padding: EdgeInsets.only(top: 12.0),
@@ -39,7 +38,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
 
-              // 2. Horizontal List (Keeps its SizedBox height)
               SliverToBoxAdapter(
                 child: SizedBox(
                   height: 120,
@@ -62,7 +60,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
               const SliverToBoxAdapter(child: SizedBox(height: 30)),
 
-              // 3. Main Vertical List (Optimized)
               SliverList.separated(
                 itemBuilder: (context, index) => const TaskCardWidget(),
                 separatorBuilder: (context, index) =>
