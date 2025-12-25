@@ -210,7 +210,7 @@ class TaskInputField extends StatelessWidget {
             // Border states
             enabledBorder: borderStyle.copyWith(
               borderSide: BorderSide(
-                color: accentColor.withOpacity(0.6),
+                color: accentColor.withValues(alpha: 0.6),
                 width: 1,
               ),
             ),
