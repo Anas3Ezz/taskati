@@ -5,6 +5,11 @@ final class AppTextStyles {
     fontSize: 22,
     fontWeight: FontWeight.w500,
   );
+  TextStyle s22deepPurpleAccentWeight500 = const TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeight.w500,
+    color: Colors.deepPurpleAccent,
+  );
   TextStyle s22WhiteWeight500 = const TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.w500,

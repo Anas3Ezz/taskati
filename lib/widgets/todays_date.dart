@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taskati/screens/add_task_screen.dart';
 
 class TodaysDate extends StatelessWidget {
   const TodaysDate({super.key});
@@ -14,16 +15,22 @@ class TodaysDate extends StatelessWidget {
         const Spacer(),
         Padding(
           padding: const EdgeInsets.all(0.0),
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.deepPurpleAccent,
-              borderRadius: BorderRadius.circular(15),
+          child: InkWell(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const AddTaskScreen()),
             ),
-            child: const Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Text(
-                '+ Add Task',
-                style: TextStyle(color: Colors.white, fontSize: 25),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.deepPurpleAccent,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: const Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Text(
+                  '+ Add Task',
+                  style: TextStyle(color: Colors.white, fontSize: 25),
+                ),
               ),
             ),
           ),
