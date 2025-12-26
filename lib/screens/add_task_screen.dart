@@ -56,7 +56,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // --- Title Field ---
                   TaskInputField(
                     label: "Title",
                     hint: "Enter title",
@@ -74,48 +73,35 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     label: "Description",
                     hint: "Enter description",
                     controller: _descriptionController,
-                    maxLines: 4, // Makes it taller for multi-line input
+                    maxLines: 4,
                     accentColor: primaryPurple,
                     keyboardType: TextInputType.multiline,
                   ),
                   const SizedBox(height: 16),
                   TaskInputField(
-                    label: "Date",
-                    hint: "Select Date",
+                    label: 'Date',
+                    hint: '12/26/2025',
                     controller: _dateController,
                     accentColor: primaryPurple,
-                    readOnly: true, // Prevents keyboard popping up
-                    suffixIcon: Icons.calendar_today_outlined,
+                    readOnly: true,
+                    onTap: () async {
+                      DateTime? pickedDate = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime.now(),
+                        lastDate: DateTime(2060),
+                      );
+                      if (pickedDate != null) {
+                        setState(() {
+                          // You can format this however you like (e.g., 2025-12-26)
+                          _dateController.text =
+                              "${pickedDate.year}-${pickedDate.month}-${pickedDate.day}";
+                        });
+                      }
+                    },
+                    suffixIcon: Icons.calendar_month_outlined,
                   ),
                   const SizedBox(height: 16),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: TaskInputField(
-                          label: "Start Time",
-                          hint: "Select start",
-                          controller: _startTimeController,
-                          accentColor: primaryPurple,
-                          readOnly: true,
-                          suffixIcon: Icons.access_time,
-                        ),
-                      ),
-                      const SizedBox(width: 16),
-                      Expanded(
-                        child: TaskInputField(
-                          label: "End Time",
-                          hint: "Select end",
-                          controller: _endTimeController,
-                          accentColor: primaryPurple,
-                          readOnly: true,
-                          suffixIcon: Icons.access_time,
-                        ),
-                      ),
-                    ],
-                  ),
-
-                  const SizedBox(height: 30),
-
                   ElevatedButton(
                     onPressed: _submitForm,
                     style: ElevatedButton.styleFrom(
@@ -177,16 +163,8 @@ class TaskInputField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          label,
-          style: const TextStyle(
-            fontWeight: FontWeight.w600,
-            fontSize: 16,
-            color: Colors.black87,
-          ),
-        ),
-        const SizedBox(height: 8),
         TextFormField(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           controller: controller,
           maxLines: maxLines,
           readOnly: readOnly,
@@ -194,6 +172,14 @@ class TaskInputField extends StatelessWidget {
           keyboardType: keyboardType,
           validator: validator,
           decoration: InputDecoration(
+            label: Text(
+              label,
+              style: const TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 16,
+                color: Colors.black87,
+              ),
+            ),
             hintText: hint,
             hintStyle: TextStyle(color: Colors.grey[500]),
             filled: true,
