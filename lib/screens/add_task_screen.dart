@@ -102,6 +102,55 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     suffixIcon: Icons.calendar_month_outlined,
                   ),
                   const SizedBox(height: 16),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: TaskInputField(
+                          readOnly: true,
+                          label: "Start Time",
+                          hint: "3:20 Am",
+                          controller: _startTimeController,
+                          accentColor: primaryPurple,
+                          keyboardType: TextInputType.datetime,
+                          onTap: () async {
+                            TimeOfDay? pickedTime = await showTimePicker(
+                              context: context,
+                              initialTime: TimeOfDay.now(),
+                            );
+                            if (pickedTime != null) {
+                              setState(() {
+                                _startTimeController.text =
+                                    "${pickedTime.hour}-${pickedTime.minute}-${pickedTime.format(context)}";
+                              });
+                            }
+                          },
+                        ),
+                      ),
+                      Expanded(
+                        child: TaskInputField(
+                          readOnly: true,
+                          label: "End Time",
+                          hint: "12:00 pm",
+                          controller: _endTimeController,
+                          accentColor: primaryPurple,
+                          keyboardType: TextInputType.datetime,
+                          onTap: () async {
+                            TimeOfDay? pickedTime = await showTimePicker(
+                              context: context,
+                              initialTime: TimeOfDay.now(),
+                            );
+                            if (pickedTime != null) {
+                              setState(() {
+                                _endTimeController.text =
+                                    "${pickedTime.hour}-${pickedTime.minute}-${pickedTime.format(context)}";
+                              });
+                            }
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
                   ElevatedButton(
                     onPressed: _submitForm,
                     style: ElevatedButton.styleFrom(
