@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taskati/models/task_models.dart';
 import 'package:taskati/widgets/horizontal_date_picker.dart';
 import 'package:taskati/widgets/task_card.dart';
 import 'package:taskati/widgets/todays_date.dart';
@@ -42,10 +43,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: SizedBox(
                   height: 120,
                   child: ListView.builder(
-                    itemCount: 6,
+                    itemCount: tasks.length,
                     scrollDirection: Axis.horizontal,
                     physics: const BouncingScrollPhysics(),
-                    // shrinkWrap is removed as height is fixed by SizedBox
                     itemBuilder: (context, index) => HorizontalDatePicker(
                       isSelected: selectedIndex == index,
                       onTap: () {
@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemBuilder: (context, index) => const TaskCardWidget(),
                 separatorBuilder: (context, index) =>
                     const SizedBox(height: 10),
-                itemCount: 10,
+                itemCount: tasks.length,
               ),
 
               // Bottom padding
