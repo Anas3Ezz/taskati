@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:taskati/theme/texts_styles.dart';
 import 'package:taskati/widgets/custom_textform_field.dart';
+import 'package:taskati/widgets/custome_button.dart';
 
 class AddTaskScreen extends StatefulWidget {
   const AddTaskScreen({super.key});
@@ -130,30 +131,29 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                               context: context,
                               initialTime: TimeOfDay.now(),
                               barrierDismissible: true,
-                            ).then((value) {
-                              print(_endTimeController.text = value.toString());
-                            });
+                            ).then((value) {});
                           },
                         ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: _submitForm,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: primaryPurple,
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                    child: const Text(
-                      "Create Task",
-                      style: TextStyle(fontSize: 16),
-                    ),
-                  ),
+                  CustomButton(text: "Create Task", onTap: _submitForm),
+                  // ElevatedButton(
+                  //   onPressed: _submitForm,
+                  //   style: ElevatedButton.styleFrom(
+                  //     backgroundColor: primaryPurple,
+                  //     foregroundColor: Colors.white,
+                  //     padding: const EdgeInsets.symmetric(vertical: 16),
+                  //     shape: RoundedRectangleBorder(
+                  //       borderRadius: BorderRadius.circular(12),
+                  //     ),
+                  //   ),
+                  //   child: const Text(
+                  //     "Create Task",
+                  //     style: TextStyle(fontSize: 16),
+                  //   ),
+                  // ),
                 ],
               ),
             ),

@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: SizedBox(
                   height: 120,
                   child: ListView.builder(
-                    itemCount: tasks.length,
+                    itemCount: 6,
                     scrollDirection: Axis.horizontal,
                     physics: const BouncingScrollPhysics(),
                     itemBuilder: (context, index) => HorizontalDatePicker(
