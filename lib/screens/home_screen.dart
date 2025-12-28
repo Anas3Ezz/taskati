@@ -61,7 +61,8 @@ class _HomeScreenState extends State<HomeScreen> {
               const SliverToBoxAdapter(child: SizedBox(height: 30)),
 
               SliverList.separated(
-                itemBuilder: (context, index) => const TaskCardWidget(),
+                itemBuilder: (context, index) =>
+                    TaskCardWidget(tasks: tasks[index]),
                 separatorBuilder: (context, index) =>
                     const SizedBox(height: 10),
                 itemCount: tasks.length,

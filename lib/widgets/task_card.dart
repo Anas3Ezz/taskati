@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:taskati/models/task_models.dart';
 import 'package:taskati/theme/texts_styles.dart';
 
 class TaskCardWidget extends StatelessWidget {
-  const TaskCardWidget({super.key});
-
+  const TaskCardWidget({super.key, required this.tasks});
+  final TaskModel tasks;
   @override
   Widget build(BuildContext context) {
     return Dismissible(
@@ -23,15 +24,15 @@ class TaskCardWidget extends StatelessWidget {
                 spacing: 12,
                 children: [
                   Text(
-                    'Flutter Task-1',
+                    tasks.title ?? 'No title',
                     style: AppTextStyles().s22WhiteWeight500,
                   ),
                   Text(
-                    '02.45 Am -3.45 Am',
+                    '${tasks.startTime} - ${tasks.endTime}',
                     style: AppTextStyles().s20WhiteColor,
                   ),
                   Text(
-                    'I will do this task',
+                    tasks.discription ?? 'NO Disc',
                     style: AppTextStyles().s22WhiteWeight500,
                   ),
                 ],
@@ -41,7 +42,10 @@ class TaskCardWidget extends StatelessWidget {
               const SizedBox(width: 10),
               RotatedBox(
                 quarterTurns: 3,
-                child: Text('TODO', style: AppTextStyles().s22WhiteWeight500),
+                child: Text(
+                  tasks.status ?? 'TODO',
+                  style: AppTextStyles().s22WhiteWeight500,
+                ),
               ),
             ],
           ),
