@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:taskati/theme/texts_styles.dart';
 import 'package:taskati/widgets/custom_textform_field.dart';
 import 'package:taskati/widgets/custome_button.dart';
@@ -91,7 +92,9 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                         firstDate: DateTime.now(),
                         lastDate: DateTime(2060),
                       ).then((value) {
-                        _dateController.text = value.toString();
+                        _dateController.text = DateFormat.yMEd().format(
+                          value ?? DateTime.now(),
+                        );
                       });
                     },
                     suffixIcon: Icons.calendar_month_outlined,
@@ -131,7 +134,10 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                               context: context,
                               initialTime: TimeOfDay.now(),
                               barrierDismissible: true,
-                            ).then((value) {});
+                            ).then((value) {
+                              _endTimeController.text =
+                                  value?.format(context).toString() ?? '';
+                            });
                           },
                         ),
                       ),
