@@ -139,21 +139,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   ),
                   const SizedBox(height: 16),
                   CustomButton(text: "Create Task", onTap: _submitForm),
-                  // ElevatedButton(
-                  //   onPressed: _submitForm,
-                  //   style: ElevatedButton.styleFrom(
-                  //     backgroundColor: primaryPurple,
-                  //     foregroundColor: Colors.white,
-                  //     padding: const EdgeInsets.symmetric(vertical: 16),
-                  //     shape: RoundedRectangleBorder(
-                  //       borderRadius: BorderRadius.circular(12),
-                  //     ),
-                  //   ),
-                  //   child: const Text(
-                  //     "Create Task",
-                  //     style: TextStyle(fontSize: 16),
-                  //   ),
-                  // ),
                 ],
               ),
             ),
