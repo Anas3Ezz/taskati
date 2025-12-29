@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:taskati/models/task_models.dart';
 import 'package:taskati/theme/texts_styles.dart';
 import 'package:taskati/widgets/custom_textform_field.dart';
 import 'package:taskati/widgets/custome_button.dart';
@@ -29,14 +30,31 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
     super.dispose();
   }
 
+  List<MaterialColor> taskColors = [
+    Colors.purple,
+    Colors.red,
+    Colors.blue,
+    Colors.pink,
+  ];
+  int activeColorIndex = -1;
   void _submitForm() {
-    if (_formKey.currentState!.validate()) {}
+    if (_formKey.currentState?.validate() ?? false) {
+      tasks.add(
+        TaskModel(
+          title: _titleController.text,
+          discription: _descriptionController.text,
+          date: _dateController.text,
+          startTime: _startTimeController.text,
+          endTime: _endTimeController.text,
+          status: 'TODO',
+          color: taskColors[activeColorIndex],
+        ),
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    final Color primaryPurple = Colors.indigoAccent.shade100;
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -49,104 +67,127 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
         ),
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  TaskInputField(
-                    label: "Title",
-                    hint: "Enter title",
-                    controller: _titleController,
-                    accentColor: primaryPurple,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter a title';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 16),
-                  TaskInputField(
-                    label: "Description",
-                    hint: "Enter description",
-                    controller: _descriptionController,
-                    maxLines: 4,
-                    accentColor: primaryPurple,
-                    keyboardType: TextInputType.multiline,
-                  ),
-                  const SizedBox(height: 16),
-                  TaskInputField(
-                    label: 'Date',
-                    hint: '12/26/2025',
-                    controller: _dateController,
-                    accentColor: primaryPurple,
-                    readOnly: true,
-                    onTap: () {
-                      showDatePicker(
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime.now(),
-                        lastDate: DateTime(2060),
-                      ).then((value) {
-                        _dateController.text = DateFormat.yMEd().format(
-                          value ?? DateTime.now(),
-                        );
-                      });
-                    },
-                    suffixIcon: Icons.calendar_month_outlined,
-                  ),
-                  const SizedBox(height: 16),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: TaskInputField(
-                          readOnly: true,
-                          label: "Start Time",
-                          hint: "3:20 Am",
-                          controller: _startTimeController,
-                          accentColor: primaryPurple,
-                          keyboardType: TextInputType.datetime,
-                          onTap: () {
-                            showTimePicker(
-                              context: context,
-                              initialTime: TimeOfDay.now(),
-                            ).then((value) {
-                              _startTimeController.text =
-                                  value?.format(context).toString() ?? '';
-                            });
-                          },
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                TaskInputField(
+                  label: "Title",
+                  hint: "Enter title",
+                  controller: _titleController,
+                  // accentColor: primaryPurple,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter a title';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 16),
+                TaskInputField(
+                  label: "Description",
+                  hint: "Enter description",
+                  controller: _descriptionController,
+                  maxLines: 4,
+                  // accentColor: primaryPurple,
+                  keyboardType: TextInputType.multiline,
+                ),
+                const SizedBox(height: 16),
+                TaskInputField(
+                  label: 'Date',
+                  hint: '12/26/2025',
+                  controller: _dateController,
+                  // accentColor: primaryPurple,
+                  readOnly: true,
+                  onTap: () {
+                    showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime.now(),
+                      lastDate: DateTime(2060),
+                    ).then((value) {
+                      _dateController.text = DateFormat.yMEd().format(
+                        value ?? DateTime.now(),
+                      );
+                    });
+                  },
+                  suffixIcon: Icons.calendar_month_outlined,
+                ),
+                const SizedBox(height: 16),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TaskInputField(
+                        readOnly: true,
+                        label: "Start Time",
+                        hint: "3:20 Am",
+                        controller: _startTimeController,
+                        // accentColor: primaryPurple,
+                        keyboardType: TextInputType.datetime,
+                        onTap: () {
+                          showTimePicker(
+                            context: context,
+                            initialTime: TimeOfDay.now(),
+                          ).then((value) {
+                            _startTimeController.text =
+                                value?.format(context).toString() ??
+                                TimeOfDay.now().format(context);
+                          });
+                        },
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: TaskInputField(
+                        readOnly: true,
+                        label: "End Time",
+                        hint: "12:00 pm",
+                        controller: _endTimeController,
+                        keyboardType: TextInputType.datetime,
+                        onTap: () {
+                          showTimePicker(
+                            context: context,
+                            initialTime: TimeOfDay.now(),
+                            barrierDismissible: true,
+                          ).then((value) {
+                            _endTimeController.text =
+                                value?.format(context).toString() ??
+                                TimeOfDay.now().format(context);
+                          });
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                Row(
+                  children: List.generate(
+                    taskColors.length,
+                    (index) => InkWell(
+                      onTap: () {
+                        setState(() {
+                          activeColorIndex = index;
+                        });
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: CircleAvatar(
+                          backgroundColor: taskColors[index],
+                          radius: 25,
+                          child: activeColorIndex == index
+                              ? const Icon(Icons.check, color: Colors.white)
+                              : null,
                         ),
                       ),
-                      Expanded(
-                        child: TaskInputField(
-                          readOnly: true,
-                          label: "End Time",
-                          hint: "12:00 pm",
-                          controller: _endTimeController,
-                          accentColor: primaryPurple,
-                          keyboardType: TextInputType.datetime,
-                          onTap: () {
-                            showTimePicker(
-                              context: context,
-                              initialTime: TimeOfDay.now(),
-                              barrierDismissible: true,
-                            ).then((value) {
-                              _endTimeController.text =
-                                  value?.format(context).toString() ?? '';
-                            });
-                          },
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                  const SizedBox(height: 16),
-                  CustomButton(text: "Create Task", onTap: _submitForm),
-                ],
-              ),
+                ),
+                const SizedBox(height: 16),
+                CustomButton(text: "Create Task", onTap: _submitForm),
+              ],
             ),
           ),
         ),

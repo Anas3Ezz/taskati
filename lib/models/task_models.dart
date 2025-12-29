@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 class TaskModel {
   String? title;
   String? discription;
@@ -5,6 +7,7 @@ class TaskModel {
   String? startTime;
   String? endTime;
   String? status;
+  Color color;
   TaskModel({
     required this.title,
     required this.discription,
@@ -12,6 +15,7 @@ class TaskModel {
     required this.startTime,
     required this.endTime,
     required this.status,
+    required this.color,
   });
 }
 

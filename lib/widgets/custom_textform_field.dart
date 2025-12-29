@@ -4,7 +4,7 @@ class TaskInputField extends StatelessWidget {
   final String label;
   final String hint;
   final TextEditingController controller;
-  final Color accentColor;
+  final Color? accentColor;
   final int maxLines;
   final bool readOnly;
   final IconData? suffixIcon;
@@ -17,7 +17,7 @@ class TaskInputField extends StatelessWidget {
     required this.label,
     required this.hint,
     required this.controller,
-    required this.accentColor,
+    this.accentColor,
     this.maxLines = 1,
     this.readOnly = false,
     this.suffixIcon,
@@ -30,7 +30,7 @@ class TaskInputField extends StatelessWidget {
   Widget build(BuildContext context) {
     final OutlineInputBorder borderStyle = OutlineInputBorder(
       borderRadius: BorderRadius.circular(12.0),
-      borderSide: BorderSide(color: accentColor, width: 1.5),
+      borderSide: const BorderSide(width: 1.5),
     );
 
     return Column(
@@ -64,13 +64,13 @@ class TaskInputField extends StatelessWidget {
 
             // Border states
             enabledBorder: borderStyle.copyWith(
-              borderSide: BorderSide(
-                color: accentColor.withValues(alpha: 0.6),
+              borderSide: const BorderSide(
+                // color: accentColor.withValues(alpha: 0.6),
                 width: 1,
               ),
             ),
             focusedBorder: borderStyle.copyWith(
-              borderSide: BorderSide(color: accentColor, width: 2),
+              // borderSide: BorderSide(color: accentColor, width: 2),
             ),
             errorBorder: borderStyle.copyWith(
               borderSide: const BorderSide(color: Colors.red, width: 1),
