@@ -74,12 +74,16 @@ class _AuthScreenState extends State<AuthScreen> {
             CustomButton(
               text: 'Submit',
               onTap: () {
-                if (_formKey.currentState!.validate()) {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const HomeScreen()),
-                  );
-                }
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                );
+                // if (_formKey.currentState!.validate()) {
+                //   Navigator.pushReplacement(
+                //     context,
+                //     MaterialPageRoute(builder: (context) => const HomeScreen()),
+                //   );
+                // }
               },
             ),
           ],
