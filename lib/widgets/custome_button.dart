@@ -11,7 +11,7 @@ class CustomButton extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 70.0),
+        padding: const EdgeInsets.symmetric(horizontal: 50.0),
         child: Container(
           width: double.infinity,
           padding: const EdgeInsets.symmetric(vertical: 15),
@@ -24,7 +24,7 @@ class CustomButton extends StatelessWidget {
               text,
               style: const TextStyle(
                 color: Colors.white,
-                fontSize: 17,
+                fontSize: 22,
                 fontWeight: FontWeight.w500,
               ),
             ),

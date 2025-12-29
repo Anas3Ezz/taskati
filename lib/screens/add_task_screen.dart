@@ -37,22 +37,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
     Colors.pink,
   ];
   int activeColorIndex = -1;
-  void _submitForm() {
-    if (_formKey.currentState?.validate() ?? false) {
-      tasks.add(
-        TaskModel(
-          title: _titleController.text,
-          discription: _descriptionController.text,
-          date: _dateController.text,
-          startTime: _startTimeController.text,
-          endTime: _endTimeController.text,
-          status: 'TODO',
-          color: taskColors[activeColorIndex],
-        ),
-      );
-      Navigator.pop(context);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +57,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
           child: Form(
             key: _formKey,
             child: Column(
+              spacing: 30,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 TaskInputField(
@@ -87,7 +72,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 16),
                 TaskInputField(
                   label: "Description",
                   hint: "Enter description",
@@ -96,7 +80,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   // accentColor: primaryPurple,
                   keyboardType: TextInputType.multiline,
                 ),
-                const SizedBox(height: 16),
                 TaskInputField(
                   label: 'Date',
                   hint: '12/26/2025',
@@ -117,7 +100,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   },
                   suffixIcon: Icons.calendar_month_outlined,
                 ),
-                const SizedBox(height: 16),
                 Row(
                   children: [
                     Expanded(
@@ -163,7 +145,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 16),
                 Row(
                   children: List.generate(
                     taskColors.length,
@@ -186,8 +167,25 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 16),
-                CustomButton(text: "Create Task", onTap: _submitForm),
+                CustomButton(
+                  text: "Create Task",
+                  onTap: () {
+                    if (_formKey.currentState?.validate() ?? false) {
+                      tasks.add(
+                        TaskModel(
+                          title: _titleController.text,
+                          discription: _descriptionController.text,
+                          date: _dateController.text,
+                          startTime: _startTimeController.text,
+                          endTime: _endTimeController.text,
+                          status: 'TODO',
+                          color: taskColors[activeColorIndex],
+                        ),
+                      );
+                      Navigator.pop(context);
+                    }
+                  },
+                ),
               ],
             ),
           ),

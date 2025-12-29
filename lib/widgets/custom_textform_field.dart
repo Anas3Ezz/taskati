@@ -64,13 +64,10 @@ class TaskInputField extends StatelessWidget {
 
             // Border states
             enabledBorder: borderStyle.copyWith(
-              borderSide: const BorderSide(
-                // color: accentColor.withValues(alpha: 0.6),
-                width: 1,
-              ),
+              borderSide: const BorderSide(width: 1),
             ),
             focusedBorder: borderStyle.copyWith(
-              // borderSide: BorderSide(color: accentColor, width: 2),
+              borderSide: const BorderSide(color: Colors.deepPurple, width: 2),
             ),
             errorBorder: borderStyle.copyWith(
               borderSide: const BorderSide(color: Colors.red, width: 1),
