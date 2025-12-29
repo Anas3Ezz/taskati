@@ -13,7 +13,7 @@ class TaskCardWidget extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Colors.deepPurpleAccent,
+          color: tasks.color,
         ),
         child: Padding(
           padding: const EdgeInsets.all(18.0),

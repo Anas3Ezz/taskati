@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:taskati/models/task_models.dart';
+import 'package:taskati/screens/add_task_screen.dart';
+import 'package:taskati/widgets/date_and_add_task_row.dart';
 import 'package:taskati/widgets/horizontal_date_picker.dart';
 import 'package:taskati/widgets/task_card.dart';
-import 'package:taskati/widgets/todays_date.dart';
 import 'package:taskati/widgets/user_greeting_header.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -24,16 +25,26 @@ class _HomeScreenState extends State<HomeScreen> {
           child: CustomScrollView(
             physics: const BouncingScrollPhysics(),
             slivers: [
-              const SliverToBoxAdapter(
+              SliverToBoxAdapter(
                 child: Padding(
-                  padding: EdgeInsets.only(top: 12.0),
+                  padding: const EdgeInsets.only(top: 12.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      UserGreetingHeader(),
-                      SizedBox(height: 10),
-                      TodaysDate(),
-                      SizedBox(height: 20),
+                      const UserGreetingHeader(),
+                      const SizedBox(height: 10),
+                      DateAndAddTaskRow(
+                        onTap: () async {
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const AddTaskScreen(),
+                            ),
+                          );
+                          setState(() {});
+                        },
+                      ),
+                      const SizedBox(height: 20),
                     ],
                   ),
                 ),

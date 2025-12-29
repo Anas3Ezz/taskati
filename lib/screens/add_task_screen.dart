@@ -50,6 +50,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
           color: taskColors[activeColorIndex],
         ),
       );
+      Navigator.pop(context);
     }
   }
 

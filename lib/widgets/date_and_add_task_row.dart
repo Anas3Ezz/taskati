@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:taskati/screens/add_task_screen.dart';
 
-class TodaysDate extends StatelessWidget {
-  const TodaysDate({super.key});
-
+class DateAndAddTaskRow extends StatelessWidget {
+  const DateAndAddTaskRow({super.key, this.onTap});
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -16,10 +15,7 @@ class TodaysDate extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(0.0),
           child: InkWell(
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const AddTaskScreen()),
-            ),
+            onTap: onTap,
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.deepPurpleAccent,
