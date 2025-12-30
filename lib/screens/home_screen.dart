@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:taskati/models/task_models.dart';
 import 'package:taskati/screens/add_task_screen.dart';
 import 'package:taskati/widgets/date_and_add_task_row.dart';
@@ -70,15 +71,25 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
 
               const SliverToBoxAdapter(child: SizedBox(height: 30)),
+              // ... inside your slivers list:
 
-              SliverList.separated(
-                itemBuilder: (context, index) =>
-                    TaskCardWidget(tasks: tasks[index]),
-                separatorBuilder: (context, index) =>
-                    const SizedBox(height: 10),
-                itemCount: tasks.length,
-              ),
-
+              // 1. If tasks are empty, show the Lottie animation
+              tasks.isEmpty
+                  ? SliverToBoxAdapter(
+                      child: Column(
+                        children: [
+                          Lottie.asset('assets/images/noTasks.json'),
+                          const Text("No tasks yet!"),
+                        ],
+                      ),
+                    )
+                  : SliverList.separated(
+                      itemBuilder: (context, index) =>
+                          TaskCardWidget(tasks: tasks[index]),
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(height: 10),
+                      itemCount: tasks.length,
+                    ),
               // Bottom padding
               const SliverToBoxAdapter(child: SizedBox(height: 12)),
             ],
