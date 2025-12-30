@@ -36,7 +36,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
     Colors.blue,
     Colors.pink,
   ];
-  int activeColorIndex = -1;
+  int activeColorIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +64,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   label: "Title",
                   hint: "Enter title",
                   controller: _titleController,
-                  // accentColor: primaryPurple,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter a title';
@@ -77,7 +76,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   hint: "Enter description",
                   controller: _descriptionController,
                   maxLines: 4,
-                  // accentColor: primaryPurple,
                   keyboardType: TextInputType.multiline,
                 ),
                 TaskInputField(
@@ -108,7 +106,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                         label: "Start Time",
                         hint: "3:20 Am",
                         controller: _startTimeController,
-                        // accentColor: primaryPurple,
+                        suffixIcon: Icons.timer_outlined,
                         keyboardType: TextInputType.datetime,
                         onTap: () {
                           showTimePicker(
@@ -129,6 +127,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                         label: "End Time",
                         hint: "12:00 pm",
                         controller: _endTimeController,
+                        suffixIcon: Icons.timer_outlined,
                         keyboardType: TextInputType.datetime,
                         onTap: () {
                           showTimePicker(

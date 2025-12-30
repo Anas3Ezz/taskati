@@ -28,11 +28,11 @@ class TaskCardWidget extends StatelessWidget {
                     style: AppTextStyles().s22WhiteWeight500,
                   ),
                   Text(
-                    '${tasks.startTime} - ${tasks.endTime}',
+                    '${tasks.date} - ${tasks.endTime}',
                     style: AppTextStyles().s20WhiteColor,
                   ),
                   Text(
-                    tasks.discription ?? 'NO Disc',
+                    tasks.discription ?? 'NNOOOOOO Disc',
                     style: AppTextStyles().s22WhiteWeight500,
                   ),
                 ],
