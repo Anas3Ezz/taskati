@@ -37,6 +37,17 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
     Colors.pink,
   ];
   int activeColorIndex = 0;
+  @override
+  void initState() {
+    super.initState();
+    _dateController.text = DateFormat.yMEd().format(DateTime.now());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        _startTimeController.text = TimeOfDay.now().format(context);
+        _endTimeController.text = TimeOfDay.now().format(context);
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -170,10 +181,14 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   text: "Create Task",
                   onTap: () {
                     if (_formKey.currentState?.validate() ?? false) {
+                      String finalDescription =
+                          _descriptionController.text.isEmpty
+                          ? "Nothing"
+                          : _descriptionController.text;
                       tasks.add(
                         TaskModel(
                           title: _titleController.text,
-                          discription: _descriptionController.text,
+                          discription: finalDescription,
                           date: _dateController.text,
                           startTime: _startTimeController.text,
                           endTime: _endTimeController.text,

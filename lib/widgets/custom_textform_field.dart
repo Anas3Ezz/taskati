@@ -38,6 +38,7 @@ class TaskInputField extends StatelessWidget {
       children: [
         TextFormField(
           autovalidateMode: AutovalidateMode.onUserInteraction,
+
           controller: controller,
           maxLines: maxLines,
           readOnly: readOnly,
@@ -64,7 +65,7 @@ class TaskInputField extends StatelessWidget {
 
             // Border states
             enabledBorder: borderStyle.copyWith(
-              borderSide: const BorderSide(width: 1),
+              borderSide: const BorderSide(width: 1, color: Colors.blue),
             ),
             focusedBorder: borderStyle.copyWith(
               borderSide: const BorderSide(color: Colors.deepPurple, width: 2),

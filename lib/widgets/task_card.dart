@@ -32,7 +32,7 @@ class TaskCardWidget extends StatelessWidget {
                     style: AppTextStyles().s20WhiteColor,
                   ),
                   Text(
-                    tasks.discription ?? 'NNOOOOOO Disc',
+                    tasks.discription ?? 'c',
                     style: AppTextStyles().s22WhiteWeight500,
                   ),
                 ],
