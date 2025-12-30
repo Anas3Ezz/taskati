@@ -12,3 +12,8 @@
 #Home Screen
 
 <img width="474" height="794" alt="image" src="https://github.com/user-attachments/assets/c6dd2b36-0f90-44e7-9620-0291d7166a05" />
+
+#Add Task Screen
+
+<img width="417" height="749" alt="image" src="https://github.com/user-attachments/assets/e4d3b65e-69d7-4e40-8baf-60b2e4d98d78" />
+
