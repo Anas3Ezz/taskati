@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:taskati/theme/texts_styles.dart';
 
 class MyTextForm extends StatelessWidget {
   const MyTextForm({
@@ -24,7 +23,7 @@ class MyTextForm extends StatelessWidget {
           style: const TextStyle(fontSize: 22, color: Colors.black),
           decoration: InputDecoration(
             hintText: 'Enter your name',
-            hintStyle: AppTextStyles().s22Weight500,
+            hintStyle: const TextStyle(color: Colors.grey),
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 16,
               vertical: 18,
