@@ -183,7 +183,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     if (_formKey.currentState?.validate() ?? false) {
                       String finalDescription =
                           _descriptionController.text.isEmpty
-                          ? "Nothing"
+                          ? ""
                           : _descriptionController.text;
                       tasks.add(
                         TaskModel(
