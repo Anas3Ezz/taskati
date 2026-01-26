@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:lottie/lottie.dart';
 import 'package:taskati/models/task_models.dart';
+import 'package:taskati/models/user_model.dart';
 import 'package:taskati/screens/add_task_screen.dart';
 import 'package:taskati/widgets/date_and_add_task_row.dart';
 import 'package:taskati/widgets/horizontal_date_picker.dart';
@@ -16,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
-
+  UserModel? user = Hive.box<UserModel>('user').getAt(0);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const UserGreetingHeader(),
+                      UserGreetingHeader(user: user),
                       const SizedBox(height: 10),
                       DateAndAddTaskRow(
                         onTap: () async {

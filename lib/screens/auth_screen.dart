@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:taskati/models/user_model.dart';
 import 'package:taskati/screens/home_screen.dart';
 import 'package:taskati/widgets/custom_text_form.dart';
 import 'package:taskati/widgets/custome_button.dart';
@@ -73,11 +75,28 @@ class _AuthScreenState extends State<AuthScreen> {
             MyTextForm(formKey: _formKey, nameController: nameController),
             CustomButton(
               text: 'Submit',
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()),
-                );
+              onTap: () async {
+                var myBox = Hive.box<UserModel>('user');
+                await myBox.clear();
+                myBox
+                    .add(
+                      UserModel(
+                        image: photo?.path ?? '',
+                        name: nameController.text,
+                      ),
+                    )
+                    .then((c) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomeScreen(),
+                        ),
+                      );
+                    })
+                    .catchError((error) {
+                      print('Error $error');
+                    });
+
                 // if (_formKey.currentState!.validate()) {
                 //   Navigator.pushReplacement(
                 //     context,

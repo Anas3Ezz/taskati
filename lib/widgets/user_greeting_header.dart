@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:taskati/models/user_model.dart';
 import 'package:taskati/theme/texts_styles.dart';
 
 class UserGreetingHeader extends StatelessWidget {
-  const UserGreetingHeader({super.key});
-
+  const UserGreetingHeader({super.key, required this.user});
+  final UserModel? user;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -14,20 +17,20 @@ class UserGreetingHeader extends StatelessWidget {
             TextSpan(
               children: [
                 TextSpan(
-                  text: 'Hi,Anas\n',
+                  text: 'Hi,${user?.name ?? ''}',
                   style: AppTextStyles().s22deepPurpleAccentWeight500,
                 ),
                 const TextSpan(
-                  text: 'Have A Nice Day.',
+                  text: '\nHave A Nice Day.',
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400),
                 ),
               ],
             ),
           ),
           const Spacer(),
-          const CircleAvatar(
+          CircleAvatar(
             radius: 30,
-            child: Image(image: AssetImage('assets/guts.jpg')),
+            backgroundImage: Image.file(File(user?.image ?? '')).image,
           ),
         ],
       ),
