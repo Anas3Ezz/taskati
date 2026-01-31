@@ -36,6 +36,22 @@ class _AuthScreenState extends State<AuthScreen> {
     super.dispose();
   }
 
+  void signIn() async {
+    var myBox = Hive.box<UserModel>('user');
+    await myBox.clear();
+    myBox
+        .add(UserModel(image: photo?.path ?? '', name: nameController.text))
+        .then((c) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const HomeScreen()),
+          );
+        })
+        .catchError((error) {
+          print('Error $error');
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,34 +91,10 @@ class _AuthScreenState extends State<AuthScreen> {
             MyTextForm(formKey: _formKey, nameController: nameController),
             CustomButton(
               text: 'Submit',
-              onTap: () async {
-                var myBox = Hive.box<UserModel>('user');
-                await myBox.clear();
-                myBox
-                    .add(
-                      UserModel(
-                        image: photo?.path ?? '',
-                        name: nameController.text,
-                      ),
-                    )
-                    .then((c) {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomeScreen(),
-                        ),
-                      );
-                    })
-                    .catchError((error) {
-                      print('Error $error');
-                    });
-
-                // if (_formKey.currentState!.validate()) {
-                //   Navigator.pushReplacement(
-                //     context,
-                //     MaterialPageRoute(builder: (context) => const HomeScreen()),
-                //   );
-                // }
+              onTap: () {
+                if (_formKey.currentState!.validate()) {
+                  signIn();
+                }
               },
             ),
           ],

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:intl/intl.dart';
-import 'package:taskati/models/task_models.dart';
+import 'package:taskati/constant/app_strings.dart';
+import 'package:taskati/models/task_model.dart';
 import 'package:taskati/theme/texts_styles.dart';
 import 'package:taskati/widgets/custom_textform_field.dart';
 import 'package:taskati/widgets/custome_button.dart';
@@ -185,18 +187,36 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                           _descriptionController.text.isEmpty
                           ? ""
                           : _descriptionController.text;
-                      tasks.add(
-                        TaskModel(
-                          title: _titleController.text,
-                          discription: finalDescription,
-                          date: _dateController.text,
-                          startTime: _startTimeController.text,
-                          endTime: _endTimeController.text,
-                          status: 'TODO',
-                          color: taskColors[activeColorIndex],
-                        ),
-                      );
-                      Navigator.pop(context);
+
+                      Hive.box<TaskModel>(AppStrings.tasksBox)
+                          .add(
+                            TaskModel(
+                              title: _titleController.text,
+                              discription: finalDescription,
+                              date: _dateController.text,
+                              startTime: _startTimeController.text,
+                              endTime: _endTimeController.text,
+                              status: 'TODO',
+                              color: taskColors[activeColorIndex].value,
+                            ),
+                          )
+                          .then((c) {
+                            Navigator.pop(context);
+                          })
+                          .catchError((e) {
+                            print('errorrr');
+                          });
+                      // tasks.add(
+                      //   TaskModel(
+                      //     title: _titleController.text,
+                      //     discription: finalDescription,
+                      //     date: _dateController.text,
+                      //     startTime: _startTimeController.text,
+                      //     endTime: _endTimeController.text,
+                      //     status: 'TODO',
+                      //     color: taskColors[activeColorIndex].value,
+                      //   ),
+                      // );
                     }
                   },
                 ),

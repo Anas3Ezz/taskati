@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:lottie/lottie.dart';
-import 'package:taskati/models/task_models.dart';
+import 'package:taskati/constant/app_strings.dart';
+import 'package:taskati/models/task_model.dart';
 import 'package:taskati/models/user_model.dart';
 import 'package:taskati/screens/add_task_screen.dart';
 import 'package:taskati/widgets/date_and_add_task_row.dart';
@@ -19,8 +20,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
   UserModel? user = Hive.box<UserModel>('user').getAt(0);
+
   @override
   Widget build(BuildContext context) {
+    List<TaskModel> tasks = Hive.box<TaskModel>(
+      AppStrings.tasksBox,
+    ).values.toList();
     return Scaffold(
       body: SafeArea(
         child: Padding(

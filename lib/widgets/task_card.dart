@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:taskati/models/task_models.dart';
+import 'package:taskati/models/task_model.dart';
 import 'package:taskati/theme/texts_styles.dart';
 
 class TaskCardWidget extends StatelessWidget {
@@ -13,7 +13,7 @@ class TaskCardWidget extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: tasks.color,
+          color: Color(tasks.color),
         ),
         child: Padding(
           padding: const EdgeInsets.all(18.0),
