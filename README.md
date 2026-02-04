@@ -2,12 +2,10 @@
 # task app will help you to manage your day tasks and organize your day
 
 #Splash Screen 
-
-<img width="463" height="732" alt="Screenshot 2025-12-13 172750" src="https://github.com/user-attachments/assets/98a16ab3-2eef-4d07-8dc3-74a01cd1e4e4" />
+<img width="1080" height="2400" alt="Screenshot_1770176348" src="https://github.com/user-attachments/assets/97baf462-a358-40a8-9066-3ee750547d1c" />
 
 #Auth Screen
-
-<img width="430" height="736" alt="Screenshot 2025-12-13 172845" src="https://github.com/user-attachments/assets/8d5531c7-5bc2-4101-96e4-d39f26665f31" />
+<img width="1080" height="2400" alt="login" src="https://github.com/user-attachments/assets/ce24f454-51c9-4319-9d0d-595fc65fb47c" />
 
 #Home Screen
 <img width="1080" height="2400" alt="home screen" src="https://github.com/user-attachments/assets/46eafc49-a23d-48d1-850e-ea0ac098161d" />
