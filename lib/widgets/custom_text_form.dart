@@ -31,7 +31,7 @@ class MyTextForm extends StatelessWidget {
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
               borderSide: const BorderSide(
-                color: Color(0xFF5B6CFF), // blue border
+                color: Color(0xFF5B6CFF),
                 width: 1.5,
               ),
             ),

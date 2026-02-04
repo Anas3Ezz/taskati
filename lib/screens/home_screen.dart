@@ -6,7 +6,7 @@ import 'package:taskati/models/task_model.dart';
 import 'package:taskati/models/user_model.dart';
 import 'package:taskati/screens/add_task_screen.dart';
 import 'package:taskati/widgets/date_and_add_task_row.dart';
-import 'package:taskati/widgets/horizontal_date_picker.dart';
+import 'package:taskati/widgets/date_status.dart';
 import 'package:taskati/widgets/task_card.dart';
 import 'package:taskati/widgets/user_greeting_header.dart';
 
@@ -20,12 +20,24 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
   UserModel? user = Hive.box<UserModel>('user').getAt(0);
-
+  final List<String> categories = ['All', 'TODO', 'Complete'];
+  List<TaskModel> tasks = [];
   @override
   Widget build(BuildContext context) {
-    List<TaskModel> tasks = Hive.box<TaskModel>(
-      AppStrings.tasksBox,
-    ).values.toList();
+    if (selectedIndex == 0) {
+      tasks = Hive.box<TaskModel>(AppStrings.tasksBox).values.toList();
+    } else if (selectedIndex == 1) {
+      tasks = Hive.box<TaskModel>(AppStrings.tasksBox).values
+          .toList()
+          .where((e) => e.status?.toLowerCase() == 'todo')
+          .toList();
+    } else {
+      tasks = Hive.box<TaskModel>(AppStrings.tasksBox).values
+          .toList()
+          .where((e) => e.status?.toLowerCase() == 'completed')
+          .toList();
+    }
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -58,29 +70,34 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
 
-              SliverToBoxAdapter(
-                child: SizedBox(
-                  height: 120,
-                  child: ListView.builder(
-                    itemCount: 6,
-                    scrollDirection: Axis.horizontal,
-                    physics: const BouncingScrollPhysics(),
-                    itemBuilder: (context, index) => HorizontalDatePicker(
-                      isSelected: selectedIndex == index,
-                      onTap: () {
-                        setState(() {
-                          selectedIndex = index;
-                        });
-                      },
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 10,
+                ),
+                sliver: SliverToBoxAdapter(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: List.generate(
+                      categories.length,
+                      (index) => GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedIndex = index;
+                          });
+                        },
+                        child: DateStatus(
+                          selectedIndex: selectedIndex,
+                          categories: categories,
+                          index: index,
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
-
               const SliverToBoxAdapter(child: SizedBox(height: 30)),
-              // ... inside your slivers list:
 
-              // 1. If tasks are empty, show the Lottie animation
               tasks.isEmpty
                   ? SliverToBoxAdapter(
                       child: Column(
@@ -91,8 +108,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     )
                   : SliverList.separated(
-                      itemBuilder: (context, index) =>
-                          TaskCardWidget(tasks: tasks[index]),
+                      itemBuilder: (context, index) => TaskCardWidget(
+                        tasks: tasks[index],
+                        onDismissed: (direction) {
+                          if (direction == DismissDirection.startToEnd) {
+                            updateTask(index);
+                          } else {
+                            deleteTask(index);
+                          }
+                        },
+                      ),
                       separatorBuilder: (context, index) =>
                           const SizedBox(height: 10),
                       itemCount: tasks.length,
@@ -104,5 +129,23 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+
+  var myBox = Hive.box<TaskModel>(AppStrings.tasksBox);
+
+  void deleteTask(int index) {
+    myBox.deleteAt(index);
+    setState(() {});
+  }
+
+  void updateTask(int index) {
+    TaskModel? updateTask = myBox.getAt(index);
+    updateTask?.status = 'Completed';
+    updateTask?.save();
+    setState(() {});
+    // if (updateTask != null) {
+    //   myBox.putAt(index, updateTask);
+    //   setState(() {});
+    // }
   }
 }
