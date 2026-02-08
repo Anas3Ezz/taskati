@@ -19,8 +19,6 @@ class UserGreetingHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String displayName = formatDisplayName(user?.name);
-    final String firstLetter = displayName.isNotEmpty ? displayName[0] : "U";
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5.0),
       child: Row(
