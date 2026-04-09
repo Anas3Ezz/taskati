@@ -1,10 +1,3 @@
-# Description:
-
-Offline-first task management Flutter app with Hive local storage and Clean Architecture
-
-# Topics: 
-flutter dart bloc hive clean-architecture offline-first task-manager
-
 # Splash Screen 
 <img width="1080" height="2400" alt="Screenshot_1770176348" src="https://github.com/user-attachments/assets/97baf462-a358-40a8-9066-3ee750547d1c" />
 
